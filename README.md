@@ -2,6 +2,20 @@
 
 > **Functional prototype demonstrating AI-agent action interception and defense against prompt-injection-style hijacking.**
 
+## 🚀 Live Prototype
+
+🔗 **[Try SentinelMesh Live](https://sentinelmesh.streamlit.app/)**
+
+No installation required to try the prototype.
+
+### 🎬 Quick Demo
+
+**🟢 Safe Demo**
+User Request → AI Action → Task Scope Check → ALLOW
+
+**🔴 Attack Demo**
+Malicious Document → Tainted Session → Fake Trap → Risk 100 → BLOCK → Agent Locked
+
 ---
 
 ## 🚨 Problem Statement
@@ -81,53 +95,6 @@ Autonomous AI agents executing tools (reading files, calling APIs, sending netwo
 
 ---
 
-## 🚀 Quick Start & Installation
-
-### Prerequisites
-- **Python**: 3.11 or higher
-- **OS**: Windows, macOS, or Linux
-- **No external paid API keys or cloud services required!** Works 100% offline.
-
-### 1. Clone & Navigate
-```bash
-git clone https://github.com/your-org/sentinelmesh.git
-cd sentinelmesh
-```
-
-### 2. Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Launch Streamlit Dashboard
-```bash
-streamlit run app.py
-```
-
-Open your browser at `http://localhost:8501`.
-
----
-
-## 🎬 How to Run the Demo
-
-### Scenario 1: Normal Safe Task
-1. Click **`▶ Run Safe Demo`** on the left sidebar.
-2. User task: `"Summarize normal_report.txt"`.
-3. Agent reads `normal_report.txt` (allowed within task scope).
-4. **SentinelMesh Output**: `ALLOW` | **Risk Score**: `0 / 100` | **Status**: 🟢 `SAFE`.
-
-### Scenario 2: Indirect Prompt Injection Attack
-1. Click **`⚠ Run Attack Demo`** on the left sidebar.
-2. User task: `"Summarize malicious_report.txt"`.
-3. Agent ingests `malicious_report.txt` $\rightarrow$ Taint Tracker sets session status to ⚠️ `TAINTED`.
-4. Injected instructions attempt to force the agent to execute `read_file("traps/fake_passwords.txt")`.
-5. **SentinelMesh Interceptor** catches the action before execution.
-6. Risk Engine calculates:
-   - Outside Scope (`+35`) + Sensitive Resource (`+20`) + Fake Trap (`+50`) + Tainted Session (`+15`) = **120** $\rightarrow$ Capped at **100**.
-7. **SentinelMesh Output**: 🚨 `THREAT DETECTED` | 🚫 `ACTION BLOCKED` | 🔒 `AGENT LOCKED`.
-8. The fake credential file is **NEVER opened or exposed**.
-
----
 
 ## 📂 Project Structure
 
